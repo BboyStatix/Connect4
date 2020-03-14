@@ -1,9 +1,13 @@
 import { StyleSheet } from 'react-native';
+import colors from "../../Colors";
 
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        backgroundColor: colors.gridBackground,
+    },
+    column: {
+        flex: 1,
     },
 })
 
