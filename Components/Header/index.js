@@ -1,13 +1,13 @@
 import React from 'react';
 import { View } from "react-native";
 import styles from "./styles";
-import PlayerItem from "../PlayerItem";
+import Player from "../Player";
 
 const Header = () => {
     return (
         <View style={styles.container}>
-            <PlayerItem player={1} />
-            <PlayerItem player={2} />
+            <Player player={1} />
+            <Player player={2} />
         </View>
     )
 }
