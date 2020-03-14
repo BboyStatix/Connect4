@@ -1,22 +1,15 @@
 import React from 'react';
-import View from "react-native-web/dist/exports/View";
+import { View } from "react-native";
 import styles from "./styles";
-import Text from "react-native-web/dist/exports/Text";
+import PlayerItem from "../PlayerItem";
 
 const Header = () => {
     return (
         <View style={styles.container}>
-            <View>
-                <View style={[styles.icon, styles.player1]} />
-                <Text>Player 1</Text>
-            </View>
-            <View>
-                <View style={[styles.icon, styles.player2]} />
-                <Text>Player 2</Text>
-            </View>
+            <PlayerItem player={1} />
+            <PlayerItem player={2} />
         </View>
     )
-
 }
 
 export default Header
