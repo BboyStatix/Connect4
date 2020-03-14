@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         //temporary quickfix for aspect ratio problem
         width: 50,
         height: 50,
+        marginVertical: 5,
     },
 })
 
