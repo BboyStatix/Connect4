@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     },
     column: {
         flex: 1,
+        flexDirection: 'column-reverse'
     },
 })
 
