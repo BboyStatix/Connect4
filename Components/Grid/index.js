@@ -1,7 +1,9 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import styles from "./styles";
 import {TouchableWithoutFeedback, View} from 'react-native';
 import Disc from "../Disc";
+import BoardChecker from "./BoardChecker";
+import cloneDeep from "lodash.clonedeep"
 
 export const COLUMNS = 7
 export const ROWS = 6
@@ -26,22 +28,45 @@ const GAME_STATES = Object.freeze({
 
 const Grid = () => {
     //TODO this logic belongs in a Game container rather than Grid
-    // const [gameState, setGameState] = useState(GAME_STATES.IN_PROGRESS)
+    const [gameState, setGameState] = useState(GAME_STATES.IN_PROGRESS)
     const [boardState, setBoardState] = useState(initialBoardState())
     const [currentPlayer, setCurrentPlayer] = useState(1)
 
     const handlePress = (columnIdx) => {
-        const rowIdx = getAvailableDiscSlot(columnIdx)
-        if(rowIdx !== -1) {
-            const boardStateClone = [...boardState]
-            boardStateClone[columnIdx][rowIdx] = currentPlayer
-            // connect4(boardStateClone, {columnIdx, rowIdx})
-            togglePlayer(currentPlayer)
+        if(gameState !== GAME_STATES.ENDED) {
+            const rowIdx = getAvailableDiscSlot(columnIdx)
+            if(rowIdx !== -1) {
+                const boardStateClone = cloneDeep(boardState)
+                boardStateClone[columnIdx][rowIdx] = currentPlayer
+                setBoardState(boardStateClone)
+                const boardChecker = BoardChecker(boardStateClone, {columnIdx, rowIdx})
+                if(boardChecker.fourInARow()) {
+                    setGameState(GAME_STATES.ENDED)
+                } else {
+                    togglePlayer(currentPlayer)
+                }
+            }
+        } else {
+            startGame()
         }
     }
 
+    const startGame = () => {
+        setGameState(GAME_STATES.IN_PROGRESS)
+        setBoardState(initialBoardState)
+        setCurrentPlayer(1)
+    }
+
+    useEffect(() => {
+        if(gameState === GAME_STATES.ENDED) {
+            alert(`Player ${currentPlayer} wins!`)
+        }
+    }, [gameState])
+
+
     const getAvailableDiscSlot = (columnIdx) => {
-        return boardState[columnIdx].findIndex((disc) =>
+        const discColumn = boardState[columnIdx];
+        return discColumn.findIndex((disc) =>
             disc === null
         )
     }
