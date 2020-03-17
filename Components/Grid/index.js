@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import styles from "./styles";
-import {View, TouchableWithoutFeedback} from 'react-native';
+import {TouchableWithoutFeedback, View} from 'react-native';
 import Disc from "../Disc";
 
-const COLUMNS = 7
-const ROWS = 6
+export const COLUMNS = 7
+export const ROWS = 6
 
 /* TODO this logic can be put in a separate file
     with detailed comments explanation */
@@ -23,17 +23,6 @@ const GAME_STATES = Object.freeze({
     IN_PROGRESS: 'inProgress',
     ENDED: 'ended',
 })
-
-const connect4 = (currentPlayer, boardState, {columnIdx, rowIdx}) => {
-    const lastInsertedElement = boardState[columnIdx][rowIdx]
-    // const getConsecutiveLength = (4) => {
-    //
-    // }
-}
-
-export const check4InARow = () => {
-
-}
 
 const Grid = () => {
     //TODO this logic belongs in a Game container rather than Grid
