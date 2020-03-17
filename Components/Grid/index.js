@@ -19,8 +19,25 @@ const initialBoardState = () => {
     return matrix
 }
 
+const GAME_STATES = Object.freeze({
+    IN_PROGRESS: 'inProgress',
+    ENDED: 'ended',
+})
+
+const connect4 = (currentPlayer, boardState, {columnIdx, rowIdx}) => {
+    const lastInsertedElement = boardState[columnIdx][rowIdx]
+    // const getConsecutiveLength = (4) => {
+    //
+    // }
+}
+
+export const check4InARow = () => {
+
+}
+
 const Grid = () => {
     //TODO this logic belongs in a Game container rather than Grid
+    // const [gameState, setGameState] = useState(GAME_STATES.IN_PROGRESS)
     const [boardState, setBoardState] = useState(initialBoardState())
     const [currentPlayer, setCurrentPlayer] = useState(1)
 
@@ -29,7 +46,7 @@ const Grid = () => {
         if(rowIdx !== -1) {
             const boardStateClone = [...boardState]
             boardStateClone[columnIdx][rowIdx] = currentPlayer
-            connect4(boardStateClone, columnIdx, rowIdx)
+            // connect4(boardStateClone, {columnIdx, rowIdx})
             togglePlayer(currentPlayer)
         }
     }
