@@ -25,11 +25,11 @@ const Grid = () => {
     const [currentPlayer, setCurrentPlayer] = useState(1)
 
     const handlePress = (columnIdx) => {
-        const availableDiscSlot = getAvailableDiscSlot(columnIdx)
-        if(availableDiscSlot !== -1) {
+        const rowIdx = getAvailableDiscSlot(columnIdx)
+        if(rowIdx !== -1) {
             const boardStateClone = [...boardState]
-            boardStateClone[columnIdx][availableDiscSlot] = currentPlayer
-            setBoardState(boardStateClone)
+            boardStateClone[columnIdx][rowIdx] = currentPlayer
+            connect4(boardStateClone, columnIdx, rowIdx)
             togglePlayer(currentPlayer)
         }
     }
