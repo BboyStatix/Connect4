@@ -4,9 +4,7 @@ import {TouchableWithoutFeedback, View} from 'react-native';
 import Disc from "../Disc";
 import BoardChecker from "./BoardChecker";
 import cloneDeep from "lodash.clonedeep"
-
-export const COLUMNS = 7
-export const ROWS = 6
+import {COLUMNS, ROWS} from "../../Config";
 
 /* TODO this logic can be put in a separate file
     with detailed comments explanation */

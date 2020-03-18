@@ -1,4 +1,4 @@
-import {COLUMNS, ROWS} from "../index";
+import {COLUMNS, ROWS} from "../../../Config";
 
 const BoardChecker = (boardState, lastInsertedDiscPosition) => ({
     lastInsertedDisc: () => {
