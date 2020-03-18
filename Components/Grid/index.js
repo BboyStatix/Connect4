@@ -19,9 +19,8 @@ const initialBoardState = () => {
     return matrix
 }
 
-const Grid = () => {
+const Grid = ({gameState, setGameState}) => {
     //TODO this logic belongs in a Game container rather than Grid
-    const [gameState, setGameState] = useState(GAME_STATES.IN_PROGRESS)
     const [boardState, setBoardState] = useState(initialBoardState())
     const [currentPlayer, setCurrentPlayer] = useState(1)
 
