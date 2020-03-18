@@ -19,7 +19,7 @@ The nodeJS installation should also automatically install [NPM](https://www.npmj
 
 * Expo Client
 
-Please install the Expo Client App on your mobile device. You may need to sign up for an account.
+Please install the Expo Client App on your mobile device.
 
 [IOS](https://apps.apple.com/app/apple-store/id982107779)
 
@@ -35,7 +35,12 @@ If installation fails, delete node_modules and package-lock.json and try again
 Run `npm start`
 The following message may pop up: `This command requires Expo CLI. Do you want to install it globally [Y/n]?`
 Type `Y` and press enter and the cli will be installed globally for you.
-It should open a browser window for you. There you can see a QR code. Open the Expo Client on your mobile device to scan it.
+It should open a browser window for you. 
+There you can see a QR code. Scan the QR code with the Expo app (Android) or the QR Code Reader (iOS). 
+
+Make sure that the device that you ran expo on and your mobile device are connected to the same wifi network. 
+If not, in the web browser you may have to toggle the Connection option from LAN to Tunnel first. 
+
 
 ## Running tests
 Run `npm run test`
@@ -52,7 +57,8 @@ Tap on any column to place a disc. Each player takes turns until a winner is fou
 In order to implement the animation where the disc is seen to drop into position behind the grid, 
 I would need to refactor the grid items to use an svg square with a transparent hole in the middle.
 That way I can use z-index to create the effect of the disc going behind the grid.
-3) Does not yet support the case where no opponents win the round. Need to reload app to restart the match.
+3) Does not yet support the case where no opponents win the round.
+4) The test cases are not exhaustive enough.
 
 
 ## My Other Projects
