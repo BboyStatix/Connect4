@@ -30,7 +30,7 @@ const Grid = () => {
     const [boardState, setBoardState] = useState(initialBoardState())
     const [currentPlayer, setCurrentPlayer] = useState(1)
 
-    const handlePress = (columnIdx) => {
+    async function handlePress(columnIdx) {
         if(gameState !== GAME_STATES.ENDED) {
             const rowIdx = getAvailableDiscSlot(columnIdx)
             if(rowIdx !== -1) {
@@ -38,7 +38,8 @@ const Grid = () => {
                 boardStateClone[columnIdx][rowIdx] = currentPlayer
                 setBoardState(boardStateClone)
                 const boardChecker = BoardChecker(boardStateClone, {columnIdx, rowIdx})
-                if(boardChecker.fourInARow()) {
+                const fourInARow = await boardChecker.fourInARow()
+                if(fourInARow) {
                     setGameState(GAME_STATES.ENDED)
                 } else {
                     togglePlayer(currentPlayer)

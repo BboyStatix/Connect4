@@ -8,16 +8,18 @@ const BoardChecker = (boardState, lastInsertedDiscPosition) => ({
 
     getVerticalLength() {
         const {columnIdx, rowIdx} = lastInsertedDiscPosition
-        return 1
+        return Promise.resolve(
+            1
             + this.getTopLength(columnIdx, rowIdx+1)
             + this.getBottomLength(columnIdx, rowIdx-1)
+        )
     },
 
     getHorizontalLength() {
         const {columnIdx, rowIdx} = lastInsertedDiscPosition
-        return 1
+        return Promise.resolve(1
             + this.getLeftLength(columnIdx-1, rowIdx)
-            + this.getRightLength(columnIdx+1, rowIdx)
+            + this.getRightLength(columnIdx+1, rowIdx))
     },
 
     getLeftLength(columnIdx, rowIdx) {
@@ -40,16 +42,16 @@ const BoardChecker = (boardState, lastInsertedDiscPosition) => ({
 
     getLeftDiagonalLength() {
         const {columnIdx, rowIdx} = lastInsertedDiscPosition
-        return 1
+        return Promise.resolve(1
             + this.getTopLeftLength(columnIdx-1, rowIdx+1)
-            + this.getBottomRightLength(columnIdx+1, rowIdx-1)
+            + this.getBottomRightLength(columnIdx+1, rowIdx-1))
     },
 
     getRightDiagonalLength() {
         const {columnIdx, rowIdx} = lastInsertedDiscPosition
-        return 1
+        return Promise.resolve(1
             + this.getTopRightLength(columnIdx+1, rowIdx+1)
-            + this.getBottomLeftLength(columnIdx-1, rowIdx-1)
+            + this.getBottomLeftLength(columnIdx-1, rowIdx-1))
     },
 
     getTopLength(columnIdx, rowIdx) {
@@ -113,11 +115,18 @@ const BoardChecker = (boardState, lastInsertedDiscPosition) => ({
             || (rowIdx < 0 || rowIdx > maxRowIdx)
     },
 
-    fourInARow() {
-        const verticalLength = this.getVerticalLength()
-        const horizontalLength = this.getHorizontalLength()
-        const leftDiagonalLength = this.getLeftDiagonalLength()
-        const rightDiagonalLength = this.getRightDiagonalLength()
+    async fourInARow() {
+        const [
+            verticalLength,
+            horizontalLength,
+            leftDiagonalLength,
+            rightDiagonalLength
+        ] = await Promise.all([
+            this.getVerticalLength(),
+            this.getHorizontalLength(),
+            this.getLeftDiagonalLength(),
+            this.getRightDiagonalLength(),
+        ])
 
         return (verticalLength === 4)
             || (horizontalLength === 4)
