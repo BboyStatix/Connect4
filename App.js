@@ -1,14 +1,14 @@
 import React from 'react';
-import { View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import Header from "./Components/Header";
 import Grid from "./Components/Grid";
 
 const App = () => {
   return (
-    <View>
+    <SafeAreaView>
       <Header />
       <Grid />
-    </View>
+    </SafeAreaView>
   );
 }
 
