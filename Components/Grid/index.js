@@ -4,7 +4,7 @@ import {TouchableWithoutFeedback, View} from 'react-native';
 import Disc from "../Disc";
 import BoardChecker from "./BoardChecker";
 import cloneDeep from "lodash.clonedeep"
-import {COLUMNS, ROWS} from "../../Config";
+import {COLUMNS, GAME_STATES, ROWS} from "../../Config";
 
 /* TODO this logic can be put in a separate file
     with detailed comments explanation */
@@ -18,11 +18,6 @@ const initialBoardState = () => {
     }
     return matrix
 }
-
-const GAME_STATES = Object.freeze({
-    IN_PROGRESS: 'inProgress',
-    ENDED: 'ended',
-})
 
 const Grid = () => {
     //TODO this logic belongs in a Game container rather than Grid
