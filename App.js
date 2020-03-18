@@ -9,17 +9,14 @@ const App = () => {
   return (
     <SafeAreaView>
         <Game>
-            {(
-                gameState, setGameState,
-                currentPlayer, setCurrentPlayer
-            ) =>
+            {(gameState, currentPlayer, boardState, insertDisc) =>
                 <>
                     <Header />
                     <Grid
                         gameState={gameState}
                         currentPlayer={currentPlayer}
-                        setGameState={setGameState}
-                        setCurrentPlayer={setCurrentPlayer}
+                        boardState={boardState}
+                        insertDisc={insertDisc}
                     />
                     <CurrentPlayerIndicator currentPlayer={currentPlayer}/>
                 </>
