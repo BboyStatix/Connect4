@@ -19,7 +19,7 @@ The nodeJS installation should also automatically install [NPM](https://www.npmj
 
 * Expo Client
 
-Please install the Expo Client App. You may need to sign up for an account.
+Please install the Expo Client App on your mobile device. You may need to sign up for an account.
 
 [IOS](https://apps.apple.com/app/apple-store/id982107779)
 
@@ -33,6 +33,8 @@ If installation fails, delete node_modules and package-lock.json and try again
 
 ## Running application
 Run `npm start`
+The following message may pop up: `This command requires Expo CLI. Do you want to install it globally [Y/n]?`
+Type `Y` and press enter and the cli will be installed globally for you.
 It should open a browser window for you. There you can see a QR code. Open the Expo Client on your mobile device to scan it.
 
 ## Running tests
