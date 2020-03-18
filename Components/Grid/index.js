@@ -19,10 +19,8 @@ const initialBoardState = () => {
     return matrix
 }
 
-const Grid = ({gameState, setGameState}) => {
-    //TODO this logic belongs in a Game container rather than Grid
+const Grid = ({gameState, setGameState, currentPlayer, setCurrentPlayer}) => {
     const [boardState, setBoardState] = useState(initialBoardState())
-    const [currentPlayer, setCurrentPlayer] = useState(1)
 
     async function handlePress(columnIdx) {
         if(gameState !== GAME_STATES.ENDED) {
