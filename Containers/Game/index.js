@@ -14,6 +14,12 @@ const initialBoardState = () => {
     return matrix
 }
 
+const getAvailableDiscSlot = (discColumn) => {
+    return discColumn.findIndex((disc) =>
+        disc === null
+    )
+}
+
 const Game = ({children}) => {
     const [gameState, setGameState] = useState(GAME_STATES.IN_PROGRESS)
     const [currentPlayer, setCurrentPlayer] = useState(1)
@@ -27,7 +33,7 @@ const Game = ({children}) => {
 
     async function insertDisc(columnIdx) {
         if(gameState !== GAME_STATES.ENDED) {
-            const rowIdx = getAvailableDiscSlot(columnIdx)
+            const rowIdx = getAvailableDiscSlot(boardState[columnIdx])
             if(rowIdx !== -1) {
                 const boardStateClone = cloneDeep(boardState)
                 boardStateClone[columnIdx][rowIdx] = currentPlayer
@@ -43,13 +49,6 @@ const Game = ({children}) => {
         } else {
             startGame()
         }
-    }
-
-    const getAvailableDiscSlot = (columnIdx) => {
-        const discColumn = boardState[columnIdx];
-        return discColumn.findIndex((disc) =>
-            disc === null
-        )
     }
 
     const togglePlayer = (currentPlayer) => {

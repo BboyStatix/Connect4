@@ -16,7 +16,7 @@ const Grid = ({gameState, currentPlayer, boardState, insertDisc}) => {
             {boardState.map((columnOfDiscs, columnIdx) =>
                 <TouchableWithoutFeedback
                     key={columnIdx}
-                    onPress={() => insertDisc(columnIdx, currentPlayer)}
+                    onPress={() => insertDisc(columnIdx)}
                 >
                     <View style={styles.column}>
                         {columnOfDiscs.map((disc, rowIdx) =>
