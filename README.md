@@ -1,6 +1,7 @@
 # Connect4
 Connect 4 is a two-player game where players take turns to drop colored discs onto a vertical grid. 
 The first player to get four discs in a row, horizontally, vertically, or diagonally wins.
+Demo url: https://expo.io/@bboystatix/Connect4
 
 ## Overview
 This is a React Native implementation of the game.
